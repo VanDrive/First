@@ -1,13 +1,15 @@
 <?php
-
-$sql = "SELECT * FROM article";
-$pdo_statement = $getConn->prepare($sql);
-$pdo_statement->execute();
-$result = $pdo_statement->fetchAll();
-
-?>
-<form method=”post” action=”index.php”>
-<input type=”text” name=”name”>
-<input type=”text” name=”description”>
-<input type=”text” name=”created_at”>
-</form>
+$conn_string = "pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_user;password=$db_password";
+$mysqli = new PDO($conn_string);
+if( isset( $_POST['run'] ) ) {
+    try {
+        $stmt = $mysqli->prepare("INSERT INTO article (name,description,created_at) VALUES ($name,$text,$created_at)");
+        $stmt->bindValue(, text, created_at);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+    }
+    catch (PDOException $e) {
+        echo 'Подключение не удалось: ' . $e->getMessage();
+    }
+    echo 'Кнопка нажата!';
+}
