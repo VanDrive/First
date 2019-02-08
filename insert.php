@@ -19,9 +19,6 @@ if( isset( $_POST['name'] ) ) {
     $stmt->execute();
 
     var_dump($stmt->errorInfo());
-    if ($stmt) {
-        echo '<p>Данные успешно добавлены в таблицу.</p>';
-    } else echo 'нет';
 }
 
 ?>
