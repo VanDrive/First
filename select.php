@@ -1,6 +1,6 @@
 <?php
 $name = $_POST['name'];
-$text = $_POST['description'];
+$description = $_POST['description'];
 $created_at = $_POST['created_at'];
 
 $db_host = 'localhost';

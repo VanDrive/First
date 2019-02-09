@@ -1,6 +1,6 @@
 <?php
 $name = $_POST['name'];
-$text = $_POST['description'];
+$description = $_POST['description'];
 $created_at = $_POST['created_at'];
 
 $db_host = 'localhost';
@@ -11,14 +11,12 @@ $db_table = 'article';
 
 $conn_string = "pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_user;password=$db_password";
 $mysqli = new PDO($conn_string);
-if( isset( $_POST['name'] ) ) {
+if( isset($name) ) {
     $stmt = $mysqli->prepare("INSERT INTO article (name, description, created_at) VALUES (:name, :description, :created_at)");
     $stmt->bindValue('name', $name);
     $stmt->bindValue('created_at', $created_at);
-    $stmt->bindValue('description', $text);
+    $stmt->bindValue('description', $description);
     $stmt->execute();
-
-    var_dump($stmt->errorInfo());
 }
 
 ?>
