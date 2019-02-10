@@ -17,4 +17,3 @@ $mysqli = new PDO($conn_string);
         $stmt->bindValue('id', $id);
         $stmt->execute();
         header('Location: http://127.0.0.1:8000/select.php');
-?>

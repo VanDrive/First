@@ -1,6 +1,5 @@
 <?php
 $id = $_GET['id'];
-var_dump($id);
 $name = $_POST['name'];
 $description = $_POST['description'];
 $created_at = $_POST['created_at'];
@@ -25,7 +24,7 @@ if(isset($name)) {
     }
 ?>
 
-<form action="update.php" method="post">
+<form method="post">
     <p>Name</p><input type="text" name="name">
     <p>Description</p><input type="text" name="description">
     <p>Created_at</p><input type="date" name="created_at">
