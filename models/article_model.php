@@ -26,11 +26,12 @@ public function CreateArticle ($name, $description, $created_at)
 }
 
 public function ShowArticles(){
-    $connect_db = $this->ConnectDb();
-    $stmt = $connect_db->prepare("SELECT id, name, description, created_at FROM article");
-    $stmt->execute();
-    $result = $stmt->fetchAll();
 
+    $connect_db = $this->ConnectDb();
+    $sql = "SELECT * FROM article";
+    $pdo_statement = $connect_db->prepare($sql);
+    $pdo_statement->execute();
+    $result = $pdo_statement->fetchAll();
     return $result;
 }
 
@@ -42,16 +43,29 @@ public function UpdateArticle ($id, $name, $description, $created_at)
     $stmt->bindValue(":name", $name);
     $stmt->bindValue(":created_at", $created_at);
     $stmt->bindValue(":description", $description);
-    $stmt->execute();
+    $result = $stmt->execute();
+    return $result;
 }
 
-public function Delete ($id)
-{
-    $connect_db = $this->ConnectDb();
-    $stmt = $connect_db->prepare("DELETE FROM article WHERE id=:id");
-    $stmt->bindValue(":id", $id);
-    $stmt->execute();
-}
+    public function DeleteArticle($id)
+    {
+        $connect_db = $this->ConnectDb();
+        $sql = "DELETE FROM article WHERE id=:id";
+        $pdo_statement = $connect_db->prepare($sql);
+        $pdo_statement->bindValue(":id", $id);
+        $result = $pdo_statement->execute();
+        return $result;
+    }
+
+   public function ShowById($id)
+    {
+        $connect_db = $this->ConnectDb();
+        $pdo_statement = $connect_db->prepare('SELECT * FROM article WHERE id = :id');
+        $pdo_statement->execute(array(':id' => $id));
+        $result = $pdo_statement->fetch();
+
+        return $result;
+    }
 
 
 

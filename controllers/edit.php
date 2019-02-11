@@ -1,11 +1,15 @@
 <?php
+include_once '../models/article_model.php';
 
+if(!empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['created_at']))
+{
+    $classArticle = new Article();
+    $id = $classArticle->UpdateArticle($_POST['name'], $_POST['description'], $_POST['created_at']);
+    header("location:edit.php?values=".$id);
 
-?>
+}
 
-<form action="show.articles.php" method="post">
-    <p>Name</p><input type="text" name="name">
-    <p>Description</p><input type="text" name="description">
-    <p>Created_at</p><input type="date" name="created_at">
-    <button type="submit">Submit</button>
-</form>
+$ArticlId = new Article();
+$post = $ArticlId->ShowById($_GET['id']);
+
+include_once '../views/edit.article.php';
