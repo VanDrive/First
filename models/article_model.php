@@ -14,7 +14,6 @@ private function ConnectDb ()
     return $conn_string;
 }
 
-
 public function CreateArticle ($name, $description, $created_at)
 {
     $connect_db = $this->ConnectDb();
@@ -25,8 +24,8 @@ public function CreateArticle ($name, $description, $created_at)
     $stmt->execute();
 }
 
-public function ShowArticles(){
-
+public function ShowArticles()
+{
     $connect_db = $this->ConnectDb();
     $sql = "SELECT * FROM article";
     $pdo_statement = $connect_db->prepare($sql);
@@ -47,7 +46,7 @@ public function UpdateArticle ($id, $name, $description, $created_at)
     return $result;
 }
 
-    public function DeleteArticle($id)
+public function DeleteArticle($id)
     {
         $connect_db = $this->ConnectDb();
         $sql = "DELETE FROM article WHERE id=:id";
@@ -57,16 +56,12 @@ public function UpdateArticle ($id, $name, $description, $created_at)
         return $result;
     }
 
-   public function ShowById($id)
+public function ShowById($id)
     {
         $connect_db = $this->ConnectDb();
         $pdo_statement = $connect_db->prepare('SELECT * FROM article WHERE id = :id');
         $pdo_statement->execute(array(':id' => $id));
         $result = $pdo_statement->fetch();
-
         return $result;
     }
-
-
-
 }

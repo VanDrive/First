@@ -5,11 +5,11 @@ if(!empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['cre
 {
     $classArticle = new Article();
     $id = $classArticle->UpdateArticle($_POST['name'], $_POST['description'], $_POST['created_at']);
-    header("location:edit.php?values=".$id);
+    header("location:edit_controller.php?values=".$id);
 
 }
 
 $ArticlId = new Article();
 $post = $ArticlId->ShowById($_GET['id']);
 
-include_once '../views/edit.article.php';
+include_once '../views/edit_article.php';

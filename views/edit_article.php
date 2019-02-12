@@ -1,4 +1,4 @@
-<form method="post" action="../controllers/edit.php">
+<form method="post" action="../controllers/edit_controller.php">
     <p>Name</p><input type="text" name="name">
     <p>Description</p><input type="text" name="description">
     <p>Created_at</p><input type="date" name="created_at">

@@ -24,7 +24,7 @@ $mysqli = new PDO($conn_string);
         echo '<td>'.$val['description'].'</td>';
         echo '<td>'.$val['created_at'].'</td>';
         echo '<td><a href="update.php?id='.$val['id'].'">update</a></td>';
-        echo '<td><a href="delete.php?id='.$val['id'].'">delete</a></td>';
+        echo '<td><a href="delete_controller.php?id='.$val['id'].'">delete</a></td>';
         echo '</tr>';
     }
     echo '</table>';

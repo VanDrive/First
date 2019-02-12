@@ -16,4 +16,4 @@ $mysqli = new PDO($conn_string);
         $stmt = $mysqli->prepare("DELETE FROM $db_table WHERE id=:id");
         $stmt->bindValue('id', $id);
         $stmt->execute();
-        header('Location: http://127.0.0.1:8000/select.php');
+        header('Location: http://127.0.0.1:8000/select_controller.php');
