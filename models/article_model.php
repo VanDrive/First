@@ -40,7 +40,7 @@ public function UpdateArticle ($id, $name, $description, $created_at)
     $stmt = $connect_db->prepare("UPDATE article SET name=:name, description=:description, created_at=:created_at WHERE id=:id");
     $stmt->bindValue(":id", $id);
     $stmt->bindValue(":name", $name);
-    $stmt->bindValue(":created_at", $created_at);
+    $stmt->bindValue(":created_at", $created_at ? $created_at : date('Y-m-d H:i:s', time()));
     $stmt->bindValue(":description", $description);
     $result = $stmt->execute();
     return $result;

@@ -1,5 +1,5 @@
 <?php
-include_once '../models/article_model.php';
+require_once '../models/article_model.php';
 
 $select = new Article();
 $ShowSelect = $select->ShowArticles();

@@ -12,7 +12,7 @@ foreach ($ShowSelect as $val) {
     echo '<td>'.$val['name'].'</td>';
     echo '<td>'.$val['description'].'</td>';
     echo '<td>'.$val['created_at'].'</td>';
-    echo '<td><a href="../controllers/edit_article.php?id='.$val['id'].'">update</a></td>';
+    echo '<td><a href="../controllers/edit_controller.php?id='.$val['id'].'">update</a></td>';
     echo '<td><a href="../controllers/delete_controller.php?id='.$val['id'].'">delete</a></td>';
     echo '</tr>';
 }
